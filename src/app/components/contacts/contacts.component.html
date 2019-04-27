@@ -1,0 +1,33 @@
+<app-page-header [headerIcon]="headerIcon" [headerTitle]="headerTitle"></app-page-header>
+
+<div class="row mt-5">
+  <div class="col-12 ">
+    <table *ngIf="contacts.length > 0; else noData" class="table table-bordered">
+      <thead>
+        <tr>
+          <th> #NO.</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>birthday</th>
+          <th>phones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let contact of contacts; let x = index ">
+          <td> {{ x+1 }}</td>
+          <td> {{ contact.name }} </td>
+          <td> {{ contact.email | lowercase }} </td>
+          <td> {{ contact.birthday }} </td>
+          <td>
+            <ul class="">
+              <li *ngFor="let phone of contact.phones"> {{phone }} </li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <ng-template #noData>
+      <p><i> no data available </i></p>
+    </ng-template>
+  </div>
+</div>
